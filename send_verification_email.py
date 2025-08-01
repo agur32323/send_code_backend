@@ -18,7 +18,6 @@ def send_code():
         json={
             "service_id": "service_29j3o7t",
             "template_id": "template_rrrzuzg",
-            "user_id": "iQ8i0nyrhHe48SfaK",
             "template_params": {
                 "name": "Doğrulama Sistemi",
                 "email": email,
@@ -33,4 +32,5 @@ def send_code():
     else:
         return jsonify({"error": response.text}), response.status_code
 
-# app.run(...) YOK! Render kendi başlatır.
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
