@@ -11,13 +11,14 @@ def send_code():
 
     if not email or not code:
         return jsonify({"error": "Email and code required"}), 400
+
     response = requests.post(
         "https://api.emailjs.com/api/v1.0/email/send",
         headers={"Content-Type": "application/json"},
         json={
             "service_id": "service_29j3o7t",
             "template_id": "template_rrrzuzg",
-            "public_key": "iQ8i0nyrhHe48SfaK",  # ✅ Buraya dikkat!
+            "public_key": "iQ8i0nyrhHe48SfaK",  # ✅ Burada 'public_key' olmalı
             "template_params": {
                 "name": "Doğrulama Sistemi",
                 "email": email,
