@@ -27,7 +27,7 @@ def send_code():
             "service_id": "service_29j3o7t",
             "template_id": "template_rrrzuzg",
             "user_id": "iQ8i0nyrhHe48SfaK",  # Public Key'iniz burada
-            "private_key": "URkgM7ufJ9m7560kgPVF",  # Private Key'iniz burada
+            "private_key": "URKgM7uFJI9m7S60kgFVF",  # Private Key'iniz burada
             "template_params": {
                 "name": "Doğrulama Sistemi",
                 "email": email,
