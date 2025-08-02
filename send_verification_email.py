@@ -1,12 +1,12 @@
 from flask import Flask, request, jsonify
 import requests
-import os # Ortam değişkenlerini kullanmak için
-
-# Eğer ortam değişkenlerini kullanıyorsanız
-# from dotenv import load_dotenv
-# load_dotenv()
+import os
 
 app = Flask(__name__)
+
+# Eğer ortam değişkenlerini kullanıyorsanız, bu satırı etkinleştirin.
+# from dotenv import load_dotenv
+# load_dotenv()
 
 @app.route("/send-code", methods=["POST"])
 def send_code():
@@ -17,9 +17,8 @@ def send_code():
     if not email or not code:
         return jsonify({"error": "Email and code required"}), 400
 
-    # ✅ Düzeltme burada yapılıyor:
-    # `user_id` alanını `public_key` ile doldurun,
-    # `private_key` alanını da kendi Private Key'inizle doldurun.
+    # `private_key` anahtarı, dokümantasyona göre `accessToken` olarak değiştirildi.
+    # Diğer anahtarlar (`service_id`, `template_id`, `user_id`) aynı kaldı.
     response = requests.post(
         "https://api.emailjs.com/api/v1.0/email/send",
         headers={"Content-Type": "application/json"},
@@ -27,7 +26,7 @@ def send_code():
             "service_id": "service_29j3o7t",
             "template_id": "template_rrrzuzg",
             "user_id": "iQ8i0nyrhHe48SfaK",  # Public Key'iniz burada
-            "private_key": "URKgM7uFJI9m7S60kgFVF",  # Private Key'iniz burada
+            "accessToken": "URKgM7uFJI9m7S60kgFVF",  # Private Key'iniz accessToken anahtarıyla gönderiliyor
             "template_params": {
                 "name": "Doğrulama Sistemi",
                 "email": email,
